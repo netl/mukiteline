@@ -61,9 +61,7 @@ int main(void)
 	int i=0,cnt=0,dir=1,afk=0;				//dir 1=in 2=out 0=don't care
 	OCR0B=0;						//front led brightness
 
-	//move(1);						//pull tray in
-
-	do
+	while(1)
 	{
 		//move tray if the button is pressed
 
@@ -133,14 +131,13 @@ int main(void)
 			}
 			else
 				cnt++;
-			//_delay_ms(10);
 		}
 
-		if(bit_is_clear(PINA,TRAY_OUT))	//fade the rgb leds if the tray is out
+		if(bit_is_clear(PINA,TRAY_OUT))	
 		{
 		}
-		//OCR0B=ADCH;
-	}while(1);
+
+	}
 }
 
 void set_hue(uint8_t hue)
