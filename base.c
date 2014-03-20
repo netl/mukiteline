@@ -58,7 +58,8 @@ int main(void)
 	pwm_BLUE = 0;
 	sei();							//interrupts on
 
-	int i=0,cnt=0,dir=1,afk=0;				//dir 1=in 2=out 0=don't care
+	int i=0,dir=1,afk=0;				//dir 1=in 2=out 0=don't care
+	uint16_t cnt=0;
 	OCR0B=0;						//front led brightness
 
 	while(1)
@@ -119,8 +120,8 @@ int main(void)
 		{
 			afk=0;			//turn off the front led
 			OCR0B=afk;
-			
-			if(cnt>(ADCH*50)-130)		//mess with the rgb leds
+			//set_hue(ADCH);
+			if(cnt>(ADC+100)/100)	//mess with the rgb leds
 			{
 				cnt = 0;
 				set_hue(i);
